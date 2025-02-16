@@ -1,0 +1,4 @@
+kafka:
+  user-topic: user-topic
+  movie-topic: movie-topic
+  rating-topic: rating-topic

@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: My Recommender API
+  version: 1.0.0
+servers:
+  - url: /api
+
+paths:
+  /startListener/{listenerId}:
+    get:
+      summary: Start a listener
+      operationId: startListener
+      parameters:
+        - name: listenerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ListenerId'
+      responses:
+        '200':
+          description: Listener started
+        '404':
+          description: Listener not found
+
+  /stopListener/{listenerId}:
+    get:
+      summary: Stop a listener
+      operationId: stopListener
+      parameters:
+        - name: listenerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ListenerId'
+      responses:
+        '200':
+          description: Listener stopped
+        '404':
+          description: Listener not found
+
+components:
+    schemas:
+        ListenerId:
+            type: string
+            enum: [userListenerId, movieListenerId, ratingListenerId]
