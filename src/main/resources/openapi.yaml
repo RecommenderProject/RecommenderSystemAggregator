@@ -2,6 +2,7 @@ openapi: 3.0.3
 info:
   title: My Recommender API
   version: 1.0.0
+
 servers:
   - url: /api
 
@@ -19,8 +20,16 @@ paths:
       responses:
         '200':
           description: Listener started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListenerResponse'
         '404':
           description: Listener not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListenerResponse'
 
   /stopListener/{listenerId}:
     get:
@@ -35,11 +44,21 @@ paths:
       responses:
         '200':
           description: Listener stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListenerResponse'
         '404':
           description: Listener not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListenerResponse'
 
 components:
-    schemas:
-        ListenerId:
-            type: string
-            enum: [userListenerId, movieListenerId, ratingListenerId]
+  schemas:
+    ListenerId:
+      enum: [userListenerId, movieListenerId, ratingListenerId]
+
+    ListenerResponse:
+      type: string
